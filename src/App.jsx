@@ -4,12 +4,14 @@ import SkyviewSeries from "./components/SkyviewSeries";
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 // import './App.css'
+import "./components/SkyviewSeries.css"
 
 export const App = () => {
   return (
-    <>
+    <section className="container">
+      <h1 className="card-heading">Tranding movies</h1>
     <SkyviewSeries />
-    </>
+    </section>
   );
 };
 

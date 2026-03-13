@@ -1,6 +1,6 @@
 function Custom() {
     return(
-        <p> hello my self sandeep</p>
+        <p>SKYVIEW</p>
     )
 }
  export default Custom;

@@ -1,4 +1,5 @@
 import seriesData from "../api/seriesData.json";
+import { SeriesCard } from "./SeriesCard";
 
 // let age = 19;
 // const canWatch = () => {
@@ -8,34 +9,10 @@ import seriesData from "../api/seriesData.json";
 
 export const SkyviewSeries = () => {
   return (
-    <ul>
+    <ul className="grid">
       {seriesData.map((apiValue, ind, arr) => {
         return (
-          <li key={apiValue.id}>
-            <div>
-              <img
-                src={apiValue.img_url}
-                alt={apiValue.name}
-                width="40%"
-                height="40%"
-              />
-            </div>
-
-            <h2>Name: {apiValue.name}</h2>
-            <h3>Rating: {apiValue.rating}</h3>
-            <p>Summary: {apiValue.summary}</p>
-            <p>Description: {apiValue.description}</p>
-            <p>Cast: {apiValue.cast}</p>
-            <p>Genre: {apiValue.genre}</p>
-
-            <a
-              href={apiValue.watch_url}
-              target="_blank"
-              
-            >
-              <button>Watch Now</button>
-            </a>
-          </li>
+          <SeriesCard key={apiValue.id} apiValue={apiValue} />
         );
       })}
     </ul>
