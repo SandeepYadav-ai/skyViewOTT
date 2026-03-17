@@ -1,5 +1,5 @@
 export const SeriesCard = ({ apiValue }) => {
-  const { img_url, name, rating, summary, cast, genre, watch_url } = apiValue;
+  const { img_url, name, rating, description, cast, genre, watch_url } = apiValue;
 
   return (
     <li className="movie-card">
@@ -10,7 +10,7 @@ export const SeriesCard = ({ apiValue }) => {
       <div className="movie-info">
         <h2>{name}</h2>
         <p className="rating">⭐ {rating}</p>
-        <p className="summary">{summary}</p>
+        <p className="summary">{description}</p>
         <p><b>Cast:</b> {cast}</p>
         <p><b>Genre:</b> {genre}</p>
 
