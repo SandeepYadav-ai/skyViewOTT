@@ -3,6 +3,7 @@ import SkyviewSeries from "./components/SkyviewSeries";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { DerivedState } from "./components/DerivedState";
+  
 
 // import React, { useState } from 'react'
 // import reactLogo from './assets/react.svg'
@@ -13,6 +14,7 @@ import "./components/SkyviewSeries.css"
 // import Movies from "./pages/Movies";
 // import Series from "./pages/Series";
 import Anime from "./pages/Anime";
+import { LiftingStateUp } from "./components/LiftingSatateUp";
 // import Kids from "./pages/Kids";
 
 export const App = () => {
@@ -34,6 +36,7 @@ export const App = () => {
         </Routes>
       </div>
     </Router>
+    // <LiftingStateUp />
   );
 };
 
