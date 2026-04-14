@@ -3,6 +3,7 @@ import SkyviewSeries from "./components/SkyviewSeries";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { DerivedState } from "./components/DerivedState";
+import { Login } from "./pages/Login";
   
 
 // import React, { useState } from 'react'
@@ -33,6 +34,7 @@ export const App = () => {
           <Route path="/series" element={<Series />} /> */}
           <Route path="/anime" element={<Anime />} />
           {/* <Route path="/kids" element={<Kids />} /> */}
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </Router>

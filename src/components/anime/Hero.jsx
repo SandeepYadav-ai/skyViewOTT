@@ -13,7 +13,7 @@ const Hero = () => {
     "/images/alien6.png",
   ];
 
-  const repeatedAliens = [...aliens, ...aliens, ...aliens];
+  const repeatedAliens = [...aliens, ...aliens, ...aliens]; // Repeat the array to create a longer slider
 
   return (
     <div className="hero">
