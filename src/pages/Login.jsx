@@ -1,73 +1,38 @@
 import { useState } from "react";
-import { FaUser, FaLock } from "react-icons/fa";
-import { motion } from "framer-motion";
-import "./login.css";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
-  const [form, setForm] = useState({
-    email: "",
-    password: "",
-  });
+  const [form, setForm] = useState({ email: "", password: "" });
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(form);
-    alert("Login Successful (Demo)");
+
+    const res = await fetch("http://localhost:5000/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      localStorage.setItem("token", data.token);
+
+      alert("Login Success");
+      navigate("/"); // redirect to home
+    } else {
+      alert(data);
+    }
   };
 
   return (
-    <div className="login-container">
-      <motion.form
-        className="login-box"
-        onSubmit={handleSubmit}
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <h1 className="logo">SkyView</h1>
-        <h2>Login</h2>
-
-        <div className="input-group">
-          <FaUser className="icon" />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={form.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="input-group">
-          <FaLock className="icon" />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={form.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          type="submit"
-          className="login-btn"
-        >
-          Login
-        </motion.button>
-
-        <p className="signup-text">
-          New here? <span>Sign Up</span>
-        </p>
-      </motion.form>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <input type="email" onChange={(e)=>setForm({...form,email:e.target.value})} />
+      <input type="password" onChange={(e)=>setForm({...form,password:e.target.value})} />
+      <button>Login</button>
+    </form>
   );
 };
